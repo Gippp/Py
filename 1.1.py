@@ -1,16 +1,19 @@
-left = ('(', '[', '{', '<')
-right = (')', ']', '}', '>')
-stack = []
-str = "(())([<>])"
+braces = {')': '(', '}': '{', ']': '[', '>': '<'}
+stack = ''
+str = '((<>)[])'
 
-for c in str:
-	if c in left:
-		stack.append(c)
+flag = True
+for s in str:
+	if s in braces.values():
+		stack += s
 	else:
-		i = right.index(c)
-		if stack[-1] == left[i]:
-			stack.pop(-1)
+		if stack[-1] == braces[s]:
+			stack = stack[:-1]
 		else:
-			print("Not correct")
-			exit(-1)
-print("Correct")
+			flag = False
+			break
+if stack: 
+	flag = False
+
+print(flag)
+
