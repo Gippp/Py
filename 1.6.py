@@ -1,6 +1,5 @@
-x=int(input("Введите x="))
-n=int(input("Введите n="))
-
-for i in range(0,n):
-      print(x**i
-            )
+def pow(x, n):
+    a = [1 if x != 0 else 0]
+    for i in range(0, n):
+        a.append(x * a[-1])
+    return a
